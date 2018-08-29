@@ -17,11 +17,27 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', (req, res, next) => {
+    res.render('/index');
+})
+
+app.get('/paysuccess', (req, res, next) => {
     res.render('/paysuccess');
 })
 
-app.use((_req, res) => {
-    res.sendStatus(404);
+app.get('/charge', (req, res, next) => {
+    var token = req.body.stripeToken;
+    var chargeAmount = req.body.chargeAmount;
+    var charge = stripe.charges.create({
+        amount: chargeAmount,
+        currency: 'gbp',
+        source: token
+    }, function(err, charge){
+        if(err & err.type === "StripeCardError"){
+            console.log("Your card was declined");
+        }
+    });
+    console.log("Your payment was successful")
+    res.redirect('/paysuccess')
 });
 
 app.listen(port, function () {
