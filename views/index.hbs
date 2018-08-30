@@ -13,7 +13,19 @@
   .flex {
     height: 300px;
     width: 400px;
+    padding-top: 100px;
+        padding-left: 100px;
   }
+.box {
+  display: flex;
+  justify-content: flex-end;
+  align-items:stretch;
+  margin-bottom: 100px;
+    padding-right: 100px;
+}
+
+
+
 </style>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -59,6 +71,9 @@
   </a>
 </div>
 </section>
+
+  <section class="box">
+
     <div class="col-md-4">
       <h2>Features</h2>
       <ul>
@@ -70,12 +85,41 @@
         <li>260 torque@2800rpm</li>
         <li>4-Speed Automatic Transmission</li>
       </ul>
+
+<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    More Info
+  </button>
+</p>
+
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    -Paint matched line-x rocker panels
+-Bed liner sprayed inner rear fenders
+-De-badged/with 2018 emblems
+-2018 power heated mirrors 
+-Alum. Black diamond plate bed caps
+-Black diamond plate better-built toolbox
+(Small dent in face)
+-N-fab cab-length black running boards
+-Black line-x bed interior
+-Road armor front and rear bumpers
+(white powercoated)
+-Clear 3rd brake light
+-Piaa day/fog lamps x4
+-Warn 12,000 Lb winch with remote control
+(Synthetic kevlar braid)
+  </div>
+</div>
+
       <form action="/charge" method="post">
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_oV2txPCWWLjwWcK6vymCmtmG"
           data-amount="1586044" data-name="2008 GMC Sierra" data-description="Red 2008 GMC Sierra 1500" data-locale="auto">
         </script>
       </form>
     </div>
+    </section>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
