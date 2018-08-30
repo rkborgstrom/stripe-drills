@@ -1,38 +1,36 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const strip = require('stripe')('sk_test_oJUwEkm3gJOlqs0d4XKB2HnD');
 const app = express();
+const hbs = require('hbs');
 const port = process.env.PORT || 8000;
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.disable('x-powered-by');
-app.use(morgan('short'));
-
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
 }));
 
-app.get('/', (req, res, next) => {
-    res.render('/index');
-})
+app.get('/', function (req, res) {
+    res.render('index', {
+
+    });
+});
 
 app.get('/paysuccess', (req, res, next) => {
     res.render('/paysuccess');
 })
 
-app.get('/charge', (req, res, next) => {
+app.post('/charge', (req, res, next) => {
     var token = req.body.stripeToken;
     var chargeAmount = req.body.chargeAmount;
     var charge = stripe.charges.create({
         amount: chargeAmount,
-        currency: 'gbp',
+        currency: 'usd',
         source: token
-    }, function(err, charge){
-        if(err & err.type === "StripeCardError"){
+    }, function (err, charge) {
+        if (err & err.type === "StripeCardError") {
             console.log("Your card was declined");
         }
     });
